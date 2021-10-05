@@ -1,16 +1,14 @@
-// Import a Gleam module
-import text
+import react.{Id, Class, Key, use_state, render, div, button, react_string}
 
-// Import a JavaScript function from a JavaScript module
-external fn pretty(String) -> String =
-  "./ffi.js" "pretty"
+pub fn my_component() {
+  div(
+    [Class("outer")],
+    [
+      div([Key("1")], [react_string("Hello there")]),
+    ]
+  )
+}
 
-// Import a JavaScript function from a global object
-external fn log(anything) -> Nil =
-  "" "console.log"
-
-// Put it all together
 pub fn main() {
-  log(pretty(text.lucy))
-  log(text.greeting)
+  render(my_component(), "root")
 }
